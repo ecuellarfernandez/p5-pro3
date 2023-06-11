@@ -1,6 +1,7 @@
 package org.p5.archivos;
 
 import org.p5.arboles.Arbol;
+import org.p5.obj.Vendedor;
 
 import java.io.File;
 
@@ -12,13 +13,9 @@ public class TestLectorArbol {
             System.exit(0);
         }
         LectorArchivo lector = new LectorArchivo(archivo);
-        Arbol<String> arbol = lector.leer();
-
-        arbol.existe("Hugo");
+        Arbol<Vendedor> arbol = lector.leer();
 
         System.out.println(arbol);
-
-        LectorArchivo lectorVentas = new LectorArchivo(new File("C:\\Users\\erick\\IdeaProjects\\p5\\ventas.txt"));
 
     }
 

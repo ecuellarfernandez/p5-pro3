@@ -1,22 +1,20 @@
-2023-05-06 15:28:36 INFO  (Main.java:10) HOLAAAAAA
-2023-05-06 15:30:01 INFO  (Main.java:10) HOLAAAAAA
-2023-05-06 15:30:48 INFO  (Main.java:10) HOLAAAAAA
-2023-05-06 15:31:11 INFO  (Main.java:10) HOLAAAAAA
-2023-05-06 15:33:05 INFO  (Main.java:10) HOLAAAAAA
-2023-05-06 15:33:46 INFO  (Main.java:10) HOLAAAAAA
-2023-05-06 15:35:40 INFO  (Main.java:10) HOLAAAAAA
-2023-05-06 15:39:48 INFO  Main:10 - HOLAAAAAA
-2023-06-09 17:03:52 DEBUG :80 - (10) : Jane --> Isaac --> Hannah --> George --> Fiona --> Emily --> David --> Charlie --> Bob --> Alice --> 
-2023-06-09 17:03:52 DEBUG :81 - (9) : Alice Bob --> Alice Charlie --> Bob David --> Bob Emily --> Charlie Fiona --> Charlie George --> Charlie Hannah --> David Isaac --> David Jane --> 
-2023-06-09 17:14:05 DEBUG :80 - (10) : Jane --> Isaac --> Hannah --> George --> Fiona --> Emily --> David --> Charlie --> Bob --> Alice --> 
-2023-06-09 17:14:05 DEBUG :81 - (9) : Alice Bob --> Alice Charlie --> Bob David --> Bob Emily --> Charlie Fiona --> Charlie George --> Charlie Hannah --> David Isaac --> David Jane --> 
-2023-06-09 17:18:03 DEBUG :80 - (10) : Jane --> Isaac --> Hannah --> George --> Fiona --> Emily --> David --> Charlie --> Bob --> Alice --> 
-2023-06-09 17:18:03 DEBUG :81 - (9) : Alice Bob --> Alice Charlie --> Bob David --> Bob Emily --> Charlie Fiona --> Charlie George --> Charlie Hannah --> David Isaac --> David Jane --> 
-2023-06-09 17:21:13 DEBUG :80 - (10) : Jane --> Isaac --> Hannah --> George --> Fiona --> Emily --> David --> Charlie --> Bob --> Alice --> 
-2023-06-09 17:21:13 DEBUG :81 - (9) : Alice Bob --> Alice Charlie --> Bob David --> Bob Emily --> Charlie Fiona --> Charlie George --> Charlie Hannah --> David Isaac --> David Jane --> 
-2023-06-09 17:21:26 DEBUG :80 - (10) : Jane --> Isaac --> Hannah --> George --> Fiona --> Emily --> David --> Charlie --> Bob --> Alice --> 
-2023-06-09 17:21:26 DEBUG :81 - (9) : Alice Bob --> Alice Charlie --> Bob David --> Bob Emily --> Charlie Fiona --> Charlie George --> Charlie Hannah --> David Isaac --> David Jane --> 
-2023-06-09 17:21:38 DEBUG :80 - (10) : Jane --> Isaac --> Hannah --> George --> Fiona --> Emily --> David --> Charlie --> Bob --> Alice --> 
-2023-06-09 17:21:38 DEBUG :81 - (9) : Alice Bob --> Alice Charlie --> Bob David --> Bob Emily --> Charlie Fiona --> Charlie George --> Charlie Hannah --> David Isaac --> David Jane --> 
-2023-06-09 17:21:45 DEBUG :80 - (10) : Jane --> Isaac --> Hannah --> George --> Fiona --> Emily --> David --> Charlie --> Bob --> Alice --> 
-2023-06-09 17:21:45 DEBUG :81 - (9) : Alice Bob --> Alice Charlie --> Bob David --> Bob Emily --> Charlie Fiona --> Charlie George --> Charlie Hannah --> David Isaac --> David Jane --> 
+2023-06-11 13:04:29 DEBUG :85 - (10) : Jane --> Isaac --> Hannah --> George --> Fiona --> Emily --> David --> Charlie --> Bob --> Alice --> 
+2023-06-11 13:04:29 DEBUG :86 - (9) : Alice Bob --> Alice Charlie --> Bob David --> Bob Emily --> Charlie Fiona --> Charlie George --> Charlie Hannah --> David Isaac --> David Jane --> 
+2023-06-11 13:04:29 INFO  :48 - Se agrego el nodo Padre: Alice
+2023-06-11 13:04:29 INFO  :53 - Se agrego el hijo: Alice Bob
+2023-06-11 13:04:29 INFO  :53 - Se agrego el hijo: Alice Charlie
+2023-06-11 13:04:29 INFO  :53 - Se agrego el hijo: Bob David
+2023-06-11 13:04:29 INFO  :53 - Se agrego el hijo: Bob Emily
+2023-06-11 13:04:29 INFO  :53 - Se agrego el hijo: Charlie Fiona
+2023-06-11 13:04:29 INFO  :53 - Se agrego el hijo: Charlie George
+2023-06-11 13:04:29 INFO  :53 - Se agrego el hijo: Charlie Hannah
+2023-06-11 13:04:29 INFO  :53 - Se agrego el hijo: David Isaac
+2023-06-11 13:04:29 INFO  :53 - Se agrego el hijo: David Jane
+2023-06-11 13:12:39 DEBUG :95 - (10) : Jane --> Isaac --> Hannah --> George --> Fiona --> Emily --> David --> Charlie --> Bob --> Alice --> 
+2023-06-11 13:12:39 DEBUG :96 - (9) : Alice Bob --> Alice Charlie --> Bob David --> Bob Emily --> Charlie Fiona --> Charlie George --> Charlie Hannah --> David Isaac --> David Jane --> 
+2023-06-11 13:12:54 DEBUG :95 - (10) : Jane --> Isaac --> Hannah --> George --> Fiona --> Emily --> David --> Charlie --> Bob --> Alice --> 
+2023-06-11 13:12:54 DEBUG :96 - (9) : Alice Bob --> Alice Charlie --> Bob David --> Bob Emily --> Charlie Fiona --> Charlie George --> Charlie Hannah --> David Isaac --> David Jane --> 
+2023-06-11 13:13:07 DEBUG :96 - (10) : Jane --> Isaac --> Hannah --> George --> Fiona --> Emily --> David --> Charlie --> Bob --> Alice --> 
+2023-06-11 13:13:07 DEBUG :97 - (9) : Alice Bob --> Alice Charlie --> Bob David --> Bob Emily --> Charlie Fiona --> Charlie George --> Charlie Hannah --> David Isaac --> David Jane --> 
+2023-06-11 14:50:20 DEBUG :95 - (10) : Jane --> Isaac --> Hannah --> George --> Fiona --> Emily --> David --> Charlie --> Bob --> Alice --> 
+2023-06-11 14:50:20 DEBUG :96 - (9) : Alice Bob --> Alice Charlie --> Bob David --> Bob Emily --> Charlie Fiona --> Charlie George --> Charlie Hannah --> David Isaac --> David Jane --> 

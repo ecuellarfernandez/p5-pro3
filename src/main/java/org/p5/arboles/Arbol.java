@@ -2,6 +2,7 @@ package org.p5.arboles;
 
 
 import org.p5.listas.ListaDoble;
+import org.p5.obj.Vendedor;
 
 import java.util.HashMap;
 
@@ -10,7 +11,7 @@ public class Arbol<E> {
     private HashMap<Integer,Nodo<E>> nodos;
 
     public Arbol() {
-        nodos = new HashMap<Integer,Nodo<E>>();
+        nodos = new HashMap<Integer, Nodo<E>>();
         raiz = null;
     }
 
@@ -41,6 +42,7 @@ public class Arbol<E> {
         nodos.put(contenido.hashCode(), nuevo);
     }
 
+
     @Override
     public String toString() {
         if (raiz == null) {
@@ -49,9 +51,7 @@ public class Arbol<E> {
         return raiz.toString();
     }
 
-    public Nodo<E> getRaiz() {
-        return raiz;
-    }
+    public Nodo<E> getRaiz() {return raiz;}
 
     public boolean existe(E o) {
         for (Nodo<E> n:
@@ -61,6 +61,10 @@ public class Arbol<E> {
             }
         }
         return false;
+    }
+
+    public void setRaiz(Nodo<E> raiz) {
+        this.raiz = raiz;
     }
 
     public static class Nodo<E> {
@@ -112,5 +116,6 @@ public class Arbol<E> {
 
             return sb.toString();
         }
+
     }
 }

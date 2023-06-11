@@ -2,10 +2,12 @@ package org.p5.archivos;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.p5.listas.ListaDoble;
 import org.p5.arboles.Arbol;
+import org.p5.listas.ListaDoble;
+import org.p5.obj.Vendedor;
 
 import java.io.*;
+import java.util.HashMap;
 
 public class LectorArchivo {
     private File fuente;
@@ -14,7 +16,7 @@ public class LectorArchivo {
         this.fuente = f;
     }
 
-    public Arbol<String> leer()
+    public Arbol<Vendedor> leer()
             throws FileNotFoundException, IOException {
         if (fuente == null) {
             return null;
@@ -24,34 +26,47 @@ public class LectorArchivo {
         ListaDoble<String> relaciones = new ListaDoble<>();
 
         leerNombresYRelaciones(nombres, relaciones);
-        Arbol<String> resultado =
+        Arbol<Vendedor> resultado =
                 formarArbol(nombres, relaciones);
 
         return resultado;
     }
 
-    public Arbol<String> formarArbol(
-            ListaDoble<String> nombres,
-            ListaDoble<String> relaciones) {
+    public Arbol<Vendedor> formarArbol(ListaDoble<String> nombres, ListaDoble<String> relaciones) {
+        Arbol<Vendedor> resultado = new Arbol<>();
+        HashMap<String, Arbol.Nodo<Vendedor>> nodos = new HashMap<>();
 
-        Arbol<String> resultado = new Arbol<>();
-        boolean esRaiz = true;
+        // Agregar los nodos iniciales al mapa de nodos
+        for (String nombre : nombres) {
+            Vendedor vendedor = new Vendedor(nombre);
+            Arbol.Nodo<Vendedor> nodo = new Arbol.Nodo<>(vendedor);
+            nodos.put(nombre, nodo);
+        }
+
+        // Agregar las relaciones entre los nodos
         for (String relacion : relaciones) {
             String[] padreHijo = relacion.split(" ");
-            String padre = nombres.encontrar(padreHijo[0]);
-            String hijo = nombres.encontrar(padreHijo[1]);
+            String padre = padreHijo[0];
+            String hijo = padreHijo[1];
 
-            if (esRaiz) {
-                resultado.agregarNodo(null, padre);
-                esRaiz = false;
+            Arbol.Nodo<Vendedor> nodoPadre = nodos.get(padre);
+            Arbol.Nodo<Vendedor> nodoHijo = nodos.get(hijo);
+
+            if (nodoPadre == null || nodoHijo == null) {
+                // Si alguno de los nodos no existe, omitir la relación incorrecta
+                continue;
             }
 
-            resultado.agregarNodo(padre.hashCode(), hijo);
+            if (resultado.getRaiz() == null) {
+                // Establecer el primer nodo encontrado como raíz
+                resultado.setRaiz(nodoPadre);
+            }
+
+            nodoPadre.agregarHijo(nodoHijo);
         }
 
         return resultado;
     }
-
     private void leerNombresYRelaciones(ListaDoble<String> nombres, ListaDoble<String> relaciones)
             throws FileNotFoundException, IOException {
 
@@ -80,8 +95,5 @@ public class LectorArchivo {
         logger.debug(nombres);
         logger.debug(relaciones);
     }
-    //leer ventas con formato: <nombre>,<cantidad>,<fecha en formato dd.mm.yyyy>
-    private void leerVentas(){
 
-    }
 }

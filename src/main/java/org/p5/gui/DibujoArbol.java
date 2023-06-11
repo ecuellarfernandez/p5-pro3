@@ -2,6 +2,7 @@ package org.p5.gui;
 
 
 import org.p5.arboles.Arbol;
+import org.p5.obj.Vendedor;
 
 import java.awt.*;
 
@@ -9,9 +10,9 @@ public class DibujoArbol {
     private static final int ESPACIO_HORIZONTAL = 20;
     private static final int ESPACIO_VERTICAL = 50;
     private static final int TAMANO_NODO = 40;
-    private final Arbol<String> modelo;
+    private final Arbol<Vendedor> modelo;
 
-    public DibujoArbol(Arbol<String> modelo) {
+    public DibujoArbol(Arbol<Vendedor> modelo) {
         this.modelo = modelo;
     }
 
@@ -19,7 +20,7 @@ public class DibujoArbol {
         dibujarNodo(modelo.getRaiz(), 100, 100, g);
     }
 
-    public void dibujarNodo(Arbol.Nodo<String> nodo,
+    public void dibujarNodo(Arbol.Nodo<Vendedor> nodo,
                             int x, int y, Graphics g) {
         int ancho = ancho(nodo);
 
@@ -27,7 +28,7 @@ public class DibujoArbol {
 
         int xHijo = x;
         int yHijo = y + TAMANO_NODO + ESPACIO_VERTICAL;
-        for(Arbol.Nodo<String> hijo : nodo.getHijos()) {
+        for(Arbol.Nodo<Vendedor> hijo : nodo.getHijos()) {
 
             int avanzar = ancho(hijo) + ESPACIO_HORIZONTAL;
 
@@ -46,17 +47,17 @@ public class DibujoArbol {
         g.setColor(Color.black);
         g.drawOval(xNodo, y,
                 TAMANO_NODO, TAMANO_NODO);
-        g.drawString(nodo.getContenido(),xNodo + 10, y+20);
+        g.drawString(nodo.getContenido().getNombre(),xNodo + 10, y+20);
     }
 
-    public int ancho(Arbol.Nodo<String> nodo) {
+    public int ancho(Arbol.Nodo<Vendedor> nodo) {
         if (nodo.getHijos().tamano() == 0) {
             return TAMANO_NODO;
         }
 
         int ancho = 0;
         int espacio = 0;
-        for(Arbol.Nodo<String> hijo : nodo.getHijos()) {
+        for(Arbol.Nodo<Vendedor> hijo : nodo.getHijos()) {
             int avanzar = espacio + ancho(hijo);
             ancho += avanzar;
             espacio = ESPACIO_HORIZONTAL;

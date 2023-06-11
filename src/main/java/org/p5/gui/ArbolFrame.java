@@ -1,37 +1,40 @@
 package org.p5.gui;
 
 import org.p5.arboles.Arbol;
-import org.p5.archivos.LectorArchivo;
+import org.p5.obj.Vendedor;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 
 public class ArbolFrame extends JFrame {
-    private Arbol<String> modelo;
-    public ArbolFrame() {
+    private Arbol<Vendedor> modelo;
+
+    public ArbolFrame(Arbol<Vendedor> modelo) {
+        this.modelo = modelo;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().setLayout(new BorderLayout());
-        modelo = new Arbol<>();
-        try {
-            crearArbolTest(modelo);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
+        setSize(1000, 1000);
+
         ArbolPanel panel = new ArbolPanel(modelo);
+
         JScrollPane scroll = new JScrollPane(panel);
-        scroll.setPreferredSize(new java.awt.Dimension(500, 500));
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
         this.getContentPane().add(scroll, BorderLayout.CENTER);
 
+        // Obtener el tamaño preferido del panel y establecerlo como el tamaño preferido del JScrollPane
+        Dimension panelSize = panel.getPreferredSize();
+        scroll.setPreferredSize(panelSize);
+
         this.pack();
         this.setVisible(true);
+
+        panel.requestFocusInWindow();
     }
 
-    private void crearArbolTest(Arbol<String> arbol) throws IOException {
-        /*
-        * String a = "McPato";
+    private void crearArbolTest(Arbol<String> arbol) {
+        String a = "McPato";
         String b1 = "Donald";
         String b2 = "Daisy";
         String c1 = "Hugo";
@@ -49,20 +52,6 @@ public class ArbolFrame extends JFrame {
         arbol.agregarNodo(b2.hashCode(), c3);
         arbol.agregarNodo(b1.hashCode(), d1);
         arbol.agregarNodo(b1.hashCode(), d2);
-        arbol.agregarNodo(b1.hashCode(), d3);*/
-
-        File archivo = new File("C:\\Users\\erick\\IdeaProjects\\p5\\arbol.txt");
-        if (!archivo.exists() || !archivo.canRead()) {
-            System.out.println("No existe o no podemos leer");
-            System.exit(0);
-        }
-        LectorArchivo lector = new LectorArchivo(archivo);
-        Arbol<String> arbolLeido = lector.leer();
-        modelo=arbolLeido;
-
-    }
-
-    public static void main(String[] args) {
-        new ArbolFrame();
+        arbol.agregarNodo(b1.hashCode(), d3);
     }
 }
