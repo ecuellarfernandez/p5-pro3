@@ -18,6 +18,7 @@ public class Venta {
     public Vendedor getVendedor() {
         return vendedor;
     }
+
     public int getCantidadVendida() {
         return cantidadVendida;
     }
@@ -29,9 +30,11 @@ public class Venta {
     public double getMontoVenta() {
         return cantidadVendida * 15.0;
     }
+
     public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
     }
+
     @Override
     public String toString() {
         return "Venta{" +

@@ -24,19 +24,19 @@ public class DibujoArbol {
                             int x, int y, Graphics g) {
         int ancho = ancho(nodo);
 
-        int xNodo = x +ancho/2 - (TAMANO_NODO/2);
+        int xNodo = x + ancho / 2 - (TAMANO_NODO / 2);
 
         int xHijo = x;
         int yHijo = y + TAMANO_NODO + ESPACIO_VERTICAL;
-        for(Arbol.Nodo<Vendedor> hijo : nodo.getHijos()) {
+        for (Arbol.Nodo<Vendedor> hijo : nodo.getHijos()) {
 
             int avanzar = ancho(hijo) + ESPACIO_HORIZONTAL;
 
             g.setColor(Color.black);
-            g.drawLine(xNodo + TAMANO_NODO/2,
+            g.drawLine(xNodo + TAMANO_NODO / 2,
                     y + TAMANO_NODO / 2,
-                    xHijo + (avanzar-ESPACIO_HORIZONTAL)/2,
-                    yHijo + TAMANO_NODO/2);
+                    xHijo + (avanzar - ESPACIO_HORIZONTAL) / 2,
+                    yHijo + TAMANO_NODO / 2);
 
             dibujarNodo(hijo, xHijo, yHijo, g);
             xHijo += avanzar;
@@ -47,7 +47,7 @@ public class DibujoArbol {
         g.setColor(Color.black);
         g.drawOval(xNodo, y,
                 TAMANO_NODO, TAMANO_NODO);
-        g.drawString(nodo.getContenido().getNombre(),xNodo + 10, y+20);
+        g.drawString(nodo.getContenido().getNombre(), xNodo + 10, y + 20);
     }
 
     public int ancho(Arbol.Nodo<Vendedor> nodo) {
@@ -57,7 +57,7 @@ public class DibujoArbol {
 
         int ancho = 0;
         int espacio = 0;
-        for(Arbol.Nodo<Vendedor> hijo : nodo.getHijos()) {
+        for (Arbol.Nodo<Vendedor> hijo : nodo.getHijos()) {
             int avanzar = espacio + ancho(hijo);
             ancho += avanzar;
             espacio = ESPACIO_HORIZONTAL;

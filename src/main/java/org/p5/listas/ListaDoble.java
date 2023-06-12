@@ -68,6 +68,19 @@ public class ListaDoble<E> implements Iterable<E> {
         return null;
     }
 
+    public E getIndex(int i) {
+        if (i < 0 || i >= cantidad) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        Nodo<E> current = raiz;
+        for (int j = 0; j < i; j++) {
+            current = current.getSiguiente();
+        }
+
+        return current.getContenido();
+    }
+
     class Nodo<E> {
         private E contenido;
         private Nodo<E> siguiente;

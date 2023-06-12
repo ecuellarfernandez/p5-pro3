@@ -11,12 +11,13 @@ import java.io.IOException;
 public class Piramide {
     private Arbol<Vendedor> arbol;
     public void cargarArbol() {
-        File archivo = new File("C:\\Users\\erick\\IdeaProjects\\p5\\arbol.txt");
-        if (!archivo.exists() || !archivo.canRead()) {
+        File arbolArchivo = new File("C:\\Users\\erick\\IdeaProjects\\p5\\arbol.txt");
+        File ventasArchivo = new File("C:\\Users\\erick\\IdeaProjects\\p5\\ventas.txt");
+        if (!arbolArchivo.exists() || !arbolArchivo.canRead()) {
             System.out.println("No existe o no podemos leer");
             System.exit(0);
         }
-        LectorArchivo lector = new LectorArchivo(archivo);
+        LectorArchivo lector = new LectorArchivo(arbolArchivo, ventasArchivo);
         Arbol<Vendedor> arbol = null;
 
         try {
@@ -29,16 +30,14 @@ public class Piramide {
         System.out.println(arbol);
     }
 
-    public void cargarVentas() {
 
-    }
+
     public void mostrarArbol() {
         new ArbolFrame(arbol);
     }
 
     public void iniciar() {
         cargarArbol();
-        cargarVentas();
         mostrarArbol();
     }
 }
