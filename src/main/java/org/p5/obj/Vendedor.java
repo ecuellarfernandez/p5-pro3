@@ -2,6 +2,7 @@ package org.p5.obj;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.p5.arboles.Arbol;
 import org.p5.listas.ListaDoble;
 
 import java.util.Date;
@@ -9,89 +10,67 @@ import java.util.Date;
 public class Vendedor {
     private static Logger logger = LogManager.getRootLogger();
     private String nombre;
-    private ListaDoble<Venta> ventasRealizadas;
-    private ListaDoble<Vendedor> reclutas;
+    private ListaDoble<Venta> ventasRealizadas = new ListaDoble<>();
+    private ListaDoble<Vendedor> reclutas = new ListaDoble<>();
     private Date fecha;
-    private double gananciasAcomuladas;
+    //ganancias acumuladas por el vendedor y sus reclutas
+    //Es decir suma de ganancias propias y de sus reclutas
+    //ganancias que el propio vendedor ha generado
+    private double gananciasPropias = 0.0;
 
     public Vendedor(String nombre) {
         this.nombre = nombre;
-        this.ventasRealizadas = new ListaDoble<>();
-        this.reclutas = new ListaDoble<>();
         this.fecha = new Date();
-        this.gananciasAcomuladas = 0.0;
+        gananciasPropias = calcularGananciaPropia();
     }
 
-    private void calcularGananciasAcomuladas(){
-        gananciasAcomuladas = calcularGanancia() + calcularGananciasReclutas();
-    }
-
-    //calcularganancias
-    public double calcularGanancia() {
-        int precioProducto = 15;
-        int porcentaje = 20; //nivel 0
-        double resultado = 0.0;
-        for (Venta venta : ventasRealizadas) {
-            resultado += (double) (venta.getCantidadVendida() * precioProducto) /100 * porcentaje;
-        }
-        //logger.info("Ganancia de " + nombre + " es: " + resultado);
-
-        return resultado;
-    }
-
-    //calcularganancias de reclutas
-    public double calcularGananciasReclutas(){
-        double resultado = 0.0;
-        int nivelActual = 0;
-        //calculamos ganancia de los hijos
-        int porcentajeHijos = 5; //nivel 1
-        int porcentajeNietos = 3; //nivel 2
-        //a partir de bisnietos sera 0.05% para abajo de ese nivel
-        //es decir tataranietos, etc
-        double porcentajeBisnietos = 0.5; //nivel 3
-
-        double gananciaHijos = 0.0;
-        for (Vendedor recluta : reclutas) {
-            //entrando a primer nivel de hijos
-            gananciaHijos += recluta.getGananciasAcomuladas() * porcentajeHijos / 100;
-            //entrando a segundo nivel de nietos
-
-            for (Vendedor nieto : recluta.reclutas) {
-                resultado += nieto.getGananciasAcomuladas() * porcentajeNietos / 100;
-                //entrando a tercer nivel de bisnietos
-
-                for (Vendedor bisnieto : nieto.reclutas) {
-                    resultado += bisnieto.getGananciasAcomuladas() * porcentajeBisnietos / 100;
-                }
+    public double calcularGananciaPropia() {
+        if (!ventasRealizadas.isEmpty()) {
+            int precioProducto = 15;
+            double porcentaje = 0.2; // Porcentaje para las ventas propias (nivel 0)
+            double resultado = 0.0;
+            for (Venta venta : ventasRealizadas) {
+                resultado += venta.getCantidadVendida() * precioProducto * porcentaje;
             }
+            //logger.info("Ganancias propias de " + nombre + ": " + resultado);
+            return resultado;
+        } else {
+            //logger.info("Aún no hay ventas en: " + nombre);
+            return 0.0;
         }
-
-
-        return resultado;
     }
 
     public void agregarVenta(Venta venta) {
-        venta.setVendedor(this); // Asignar el vendedor actual a la venta
+        venta.setVendedor(this);
         ventasRealizadas.agregar(venta);
+//        logger.info("=====================================\u001B[32m VENTAS DE " + nombre + "\u001B[0m (" + ventasRealizadas.tamano() + ")=====================================");
+//        logger.info("Venta agregada: " + venta + " a " + nombre);
+//        logger.info("Venta agregada, calculando de nuevo ganancias acomuladas...");
+//        logger.info("======================================================================================");
+        calcularGananciaPropia();
     }
 
-    public void agregarRecluta(Vendedor r) {
-        reclutas.agregar(r);
+    //    public void agregarRecluta(Vendedor recluta) {
+//        reclutas.agregar(recluta);
+//        logger.info("--------------------------------\u001B[34mRECLUTAS DE " + nombre + " \u001B[0m(" + reclutas.tamano() + ")--------------------------------");
+//        logger.info("Recluta agregado: " + recluta.getNombre());
+//        logger.info("Recluta agregado, calculando de nuevo ganancias acomuladas...");
+//        logger.info("--------------------------------------------------------------------------------");
+//        calcularGananciasAcumuladas();
+//    }
+    public void setGananciasPropias(double ganancia) {
+        this.gananciasPropias = ganancia;
+    }
+
+    public ListaDoble<Vendedor> getReclutas() {
+        return reclutas;
     }
 
     public ListaDoble<Venta> getVentasRealizadas() {
         return ventasRealizadas;
     }
 
-    public double getGananciasAcomuladas(){
-        if(gananciasAcomuladas == 0.0){
-            logger.info("Todavía no se han calculado las ganancias...");
-            calcularGananciasAcomuladas();
-        }
-        return gananciasAcomuladas;
-    }
-
-    public Date getFecha(){
+    public Date getFecha() {
         return fecha;
     }
 
@@ -104,9 +83,11 @@ public class Vendedor {
         return nombre;
     }
 
-    public String toStringVentasRealizadas() {
-        return ventasRealizadas.toString();
+    public ListaDoble<Venta> getVentas() {
+        return ventasRealizadas;
     }
 
-
+    public void agregarRecluta(Vendedor contenido) {
+        reclutas.agregar(contenido);
+    }
 }

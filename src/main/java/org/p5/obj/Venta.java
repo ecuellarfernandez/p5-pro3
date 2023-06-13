@@ -27,10 +27,6 @@ public class Venta {
         return fechaVenta;
     }
 
-    public double getMontoVenta() {
-        return cantidadVendida * 15.0;
-    }
-
     public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
     }

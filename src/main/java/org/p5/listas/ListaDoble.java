@@ -81,6 +81,10 @@ public class ListaDoble<E> implements Iterable<E> {
         return current.getContenido();
     }
 
+    public boolean isEmpty() {
+        return raiz == null;
+    }
+
     class Nodo<E> {
         private E contenido;
         private Nodo<E> siguiente;

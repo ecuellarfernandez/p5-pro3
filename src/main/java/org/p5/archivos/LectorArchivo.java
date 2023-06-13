@@ -70,7 +70,6 @@ public class LectorArchivo {
                     vendedor.agregarVenta(nuevaVenta);
                 }
             }
-            vendedor.calcularGanancia();
 
             Arbol.Nodo<Vendedor> nodo = new Arbol.Nodo<>(vendedor);
             nodos.put(nombreVendedor, nodo);

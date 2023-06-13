@@ -117,5 +117,11 @@ public class Arbol<E> {
             return sb.toString();
         }
 
+        public int getNivel() {
+            if (padre == null) {
+                return 0;
+            }
+            return padre.getNivel() + 1;
+        }
     }
 }

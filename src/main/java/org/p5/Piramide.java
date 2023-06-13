@@ -5,6 +5,7 @@ import org.p5.archivos.LectorArchivo;
 import org.p5.gui.ArbolFrame;
 import org.p5.obj.Vendedor;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -27,10 +28,40 @@ public class Piramide {
         }
 
         this.arbol = arbol;
-        System.out.println(arbol);
+        //System.out.println(arbol);
+        calcularGananciasTotales(arbol.getRaiz());
     }
 
+    public void calcularGananciasTotales(Arbol.Nodo<Vendedor> raiz) {
+        double gananciaTotal = raiz.getContenido().calcularGananciaPropia() + recorrerNivelDeHijos(raiz, 1);
+        System.out.println("Ganancia total: " + gananciaTotal);
+    }
 
+    private double recorrerNivelDeHijos(Arbol.Nodo<Vendedor> nodo, int nivel) {
+        double ganancia = 0;
+
+        for (Arbol.Nodo<Vendedor> hijo : nodo.getHijos()) {
+            double gananciaHijo = hijo.getContenido().calcularGananciaPropia();
+            double porcentajeGanancia = obtenerPorcentajeGanancia(nivel);
+
+            ganancia += gananciaHijo * porcentajeGanancia;
+            ganancia += recorrerNivelDeHijos(hijo, nivel + 1);
+            //System.out.println(hijo.getContenido().getNombre() + " nivel " + nivel + ": " + gananciaHijo * porcentajeGanancia);
+        }
+        return ganancia;
+    }
+
+    private double obtenerPorcentajeGanancia(int nivel) {
+        if (nivel == 0) {
+            return 0.2;
+        } else if (nivel == 1) {
+            return 0.05;
+        } else if (nivel == 2) {
+            return 0.02;
+        } else {
+            return 0.005;
+        }
+    }
 
     public void mostrarArbol() {
         new ArbolFrame(arbol);
@@ -38,6 +69,7 @@ public class Piramide {
 
     public void iniciar() {
         cargarArbol();
+//        calcularGananciasDeRaiz();
         mostrarArbol();
     }
 }
