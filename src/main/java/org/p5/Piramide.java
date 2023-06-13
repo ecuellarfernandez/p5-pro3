@@ -28,12 +28,12 @@ public class Piramide {
         }
 
         this.arbol = arbol;
-        //System.out.println(arbol);
         calcularGananciasTotales(arbol.getRaiz());
     }
 
     public void calcularGananciasTotales(Arbol.Nodo<Vendedor> raiz) {
-        double gananciaTotal = raiz.getContenido().calcularGananciaPropia() + recorrerNivelDeHijos(raiz, 1);
+        Vendedor vendedor = raiz.getContenido();
+        double gananciaTotal = vendedor.calcularGananciaPropia() + recorrerNivelDeHijos(raiz, 1);
         System.out.println("Ganancia total: " + gananciaTotal);
     }
 
@@ -46,7 +46,6 @@ public class Piramide {
 
             ganancia += gananciaHijo * porcentajeGanancia;
             ganancia += recorrerNivelDeHijos(hijo, nivel + 1);
-            //System.out.println(hijo.getContenido().getNombre() + " nivel " + nivel + ": " + gananciaHijo * porcentajeGanancia);
         }
         return ganancia;
     }
