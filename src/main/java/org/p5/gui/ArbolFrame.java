@@ -13,7 +13,7 @@ public class ArbolFrame extends JFrame {
         this.modelo = modelo;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().setLayout(new BorderLayout());
-        setSize(1200, 1200);
+        setSize(500, 500);
 
         ArbolPanel panel = new ArbolPanel(modelo);
 

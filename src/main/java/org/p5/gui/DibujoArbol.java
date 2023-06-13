@@ -12,7 +12,7 @@ public class DibujoArbol {
     private static final int ESPACIO_VERTICAL = 50;
     private static final int TAMANO_NODO = 40;
     private final Arbol<Vendedor> modelo;
-    private HashMap<Vendedor, Point> nodos = new HashMap<>();
+    private HashMap<Arbol.Nodo<Vendedor>, Point> nodos = new HashMap<>();
 
     public DibujoArbol(Arbol<Vendedor> modelo) {
         this.modelo = modelo;
@@ -50,7 +50,7 @@ public class DibujoArbol {
         g.drawOval(xNodo, y,
                 TAMANO_NODO, TAMANO_NODO);
         g.drawString(nodo.getContenido().getNombre(), xNodo + 10, y + 20);
-        nodos.put(nodo.getContenido(), new Point(xNodo + 10, y));
+        nodos.put(nodo, new Point(xNodo + 10, y));
     }
 
     public int ancho(Arbol.Nodo<Vendedor> nodo) {
@@ -65,11 +65,11 @@ public class DibujoArbol {
             ancho += avanzar;
             espacio = ESPACIO_HORIZONTAL;
         }
-        nodos.put(nodo.getContenido(), new Point(ancho, 0));
+        nodos.put(nodo, new Point(ancho, 0));
         return ancho;
     }
 
-    public HashMap<Vendedor, Point> getNodos() {
+    public HashMap<Arbol.Nodo<Vendedor>, Point> getNodos() {
         return nodos;
     }
 

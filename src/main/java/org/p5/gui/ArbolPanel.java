@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class ArbolPanel extends JPanel {
     private Arbol<Vendedor> modelo;
     //nodos y sus coordenadas
-    private HashMap<Vendedor, Point> nodosPosiciones = new HashMap<>();
+    private HashMap<Arbol.Nodo<Vendedor>, Point> nodosPosiciones = new HashMap<>();
 
     public ArbolPanel(Arbol<Vendedor> modelo) {
         this.modelo = modelo;
@@ -42,12 +42,13 @@ public class ArbolPanel extends JPanel {
         int x = evt.getX();
         int y = evt.getY();
 
-        for (Vendedor vendedor : nodosPosiciones.keySet()) {
-            Point p = nodosPosiciones.get(vendedor);
+        for (Arbol.Nodo<Vendedor> nodo : nodosPosiciones.keySet()) {
+            Point p = nodosPosiciones.get(nodo);
             //si las coordenadas del click estan dentro de las del nodo
             if (x >= p.x && x <= p.x + 30 && y >= p.y && y <= p.y + 30) {
                 //mostrar informacion del nodo
-                JOptionPane.showMessageDialog(this, vendedor.toString());
+                //JOptionPane.showMessageDialog(this, vendedor.toString());
+                new VendedorFrame(nodo);
             }
         }
 

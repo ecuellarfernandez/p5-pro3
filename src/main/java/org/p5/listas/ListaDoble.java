@@ -39,6 +39,7 @@ public class ListaDoble<E> implements Iterable<E> {
     public int tamano() {
         return cantidad;
     }
+
     @Override
     public Iterator<E> iterator() {
         return new ListaDobleIterator<>(raiz);
