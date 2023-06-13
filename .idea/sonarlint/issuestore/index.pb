@@ -6,5 +6,3 @@
 :
 
 ventas.txt,a\f\af873f4eb40a212f82ecd500a6d27d5f7a6b92cc
-[
-+src/main/java/org/p5/arboles/TestArbol.java,e\1\e1a9d12116821fb6f685e9f84cd4b8c3b839f59e

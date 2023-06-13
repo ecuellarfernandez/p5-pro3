@@ -27,6 +27,7 @@ public class ArbolFrame extends JFrame {
         scroll.setPreferredSize(panelSize);
 
         this.pack();
+        this.setTitle("Visca el Barça");
         this.setVisible(true);
 
         panel.requestFocusInWindow();
