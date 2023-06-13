@@ -5,6 +5,9 @@ import org.apache.logging.log4j.Logger;
 import org.p5.arboles.Arbol;
 import org.p5.listas.ListaDoble;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.Date;
 
 public class Vendedor {
@@ -17,11 +20,13 @@ public class Vendedor {
     //Es decir suma de ganancias propias y de sus reclutas
     //ganancias que el propio vendedor ha generado
     private double gananciasPropias = 0.0;
+    PropertyChangeSupport observado;
 
     public Vendedor(String nombre) {
         this.nombre = nombre;
         this.fecha = new Date();
         gananciasPropias = calcularGananciaPropia();
+        observado = new PropertyChangeSupport(this);
     }
 
     public double calcularGananciaPropia() {
@@ -48,6 +53,7 @@ public class Vendedor {
 //        logger.info("Venta agregada, calculando de nuevo ganancias acomuladas...");
 //        logger.info("======================================================================================");
         calcularGananciaPropia();
+        observado.firePropertyChange("ventas", true, false);
     }
 
     //    public void agregarRecluta(Vendedor recluta) {
@@ -90,4 +96,5 @@ public class Vendedor {
     public void agregarRecluta(Vendedor contenido) {
         reclutas.agregar(contenido);
     }
+    public void addObserver(PropertyChangeListener o) {observado.addPropertyChangeListener(o);}
 }

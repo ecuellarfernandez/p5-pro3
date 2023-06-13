@@ -7,7 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class VendedorFrame extends JFrame {
-    public VendedorFrame(Arbol.Nodo<Vendedor> nodo){
+
+    public VendedorFrame(Arbol.Nodo<Vendedor> nodo) {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(300, 400);
 
@@ -27,4 +28,6 @@ public class VendedorFrame extends JFrame {
 
         panel.requestFocusInWindow();
     }
+
+
 }
